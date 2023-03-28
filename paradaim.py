@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import streamlit as st
 
-
 st.write("パラダイムトリガー買取")
 
 if st.checkbox("相場の確認"):
@@ -17,10 +16,7 @@ if st.checkbox("相場の確認"):
     soup = BeautifulSoup(response.text, "html.parser")
 
     # スクレイピング対象の要素を取得
-    target_element = soup.find("tr")
-
-    for a in soup.find_all("tr"):
-        if "販売価格" in a.text:
-            break
-        else:
-            st.write(a.text)
+    target_element = soup.find("table")
+    # pandasのread_htmlメソッドでHTMLのテーブルをDataFrameに変換
+    df = pd.read_html(str(target_element))[0]
+    st.write(df)

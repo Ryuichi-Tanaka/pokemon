@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import streamlit as st
 
-
 st.write("白熱のアルカナ買取")
 
 if st.checkbox("相場の確認"):
@@ -20,4 +19,7 @@ if st.checkbox("相場の確認"):
     target_element = soup.find("tr")
 
     for a in soup.find_all("tr"):
-        st.write(a.text)
+        if "販売価格" in a.text:
+            break
+        else:
+            st.write(a.text)

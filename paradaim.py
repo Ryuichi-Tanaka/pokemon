@@ -20,4 +20,7 @@ if st.checkbox("相場の確認"):
     target_element = soup.find("tr")
 
     for a in soup.find_all("tr"):
-        st.write(a.text)
+        if "販売価格" in a.text:
+            break
+        else:
+            st.write(a.text)

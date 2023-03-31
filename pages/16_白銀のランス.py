@@ -8,7 +8,7 @@ st.write("白銀のランス買取")
 
 
 # スクレイピング対象のURLを指定
-url = "https://osomatsusan.hatenablog.com/entry/pokekawhite423"
+url = "https://altema.jp/pokemoncard/hakuginlance"
 
 # GETリクエストを送信してHTMLを取得
 response = requests.get(url)
@@ -16,7 +16,9 @@ response = requests.get(url)
 # HTMLをパースしてBeautifulSoupオブジェクトを作成
 soup = BeautifulSoup(response.text, "html.parser")
 
-# スクin targett:レイピング対象の要素を取得
-target = soup.find("ol")
-for i in soup.find("ol"):
-    st.write(i.text)
+# スクレイピング対象の要素を取得
+tables = soup.find_all("table")
+
+for table in tables:
+    if "順位" in table.text:
+        st.write(table.text)

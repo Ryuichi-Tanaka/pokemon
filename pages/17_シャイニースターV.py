@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 
 
-st.write("白銀のランス買取")
+st.write("シャイニースターV買取")
 
 
 # スクレイピング対象のURLを指定
@@ -22,4 +22,4 @@ tables = soup.find_all("table")
 
 for table in tables:
     if "順位" in table.text:
-        print(table.text)
+        st.write(table.text)

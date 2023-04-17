@@ -4,11 +4,11 @@ import pandas as pd
 import streamlit as st
 
 
-st.write("シャイニースターV買取")
+st.write("スノーハザード買取")
 
 
 # スクレイピング対象のURLを指定
-url = "https://osomatsusan.hatenablog.com/entry/SV_SnowHazardata"
+url = "https://altema.jp/pokemoncard/snowhazard"
 
 # GETリクエストを送信してHTMLを取得
 response = requests.get(url)

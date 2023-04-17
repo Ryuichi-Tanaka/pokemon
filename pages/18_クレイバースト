@@ -1,0 +1,25 @@
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+import streamlit as st
+
+
+st.write("シャイニースターV買取")
+
+
+# スクレイピング対象のURLを指定
+url = "https://osomatsusan.hatenablog.com/entry/pokeca_ClayBurst"
+
+# GETリクエストを送信してHTMLを取得
+response = requests.get(url)
+
+# HTMLをパースしてBeautifulSoupオブジェクトを作成
+soup = BeautifulSoup(response.text, "html.parser")
+
+
+# スクレイピング対象の要素を取得
+tables = soup.find_all("table")
+
+for table in tables:
+    if "順位" in table.text:
+        st.write(table.text)
